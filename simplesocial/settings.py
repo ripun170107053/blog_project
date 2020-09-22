@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+export DJANGO_DEBUG=False
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
@@ -20,11 +20,11 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#&wy=9=(!huh@(orpx)rp_lqiuptk+2vezs&n191)xrr=0@#2&'
-
+#SECRET_KEY = '#&wy=9=(!huh@(orpx)rp_lqiuptk+2vezs&n191)xrr=0@#2&'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#&wy=9=(!huh@(orpx)rp_lqiuptk+2vezs&n191)xrr=0@#2&')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+#DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 ALLOWED_HOSTS = []
 
 
